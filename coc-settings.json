@@ -5,8 +5,9 @@
   "rust-analyzer.inlayHints.typeHints.enable": true,
   "rust-analyzer.inlayHints.parameterHints.enable": true,
   "rust-analyzer.inlayHints.maxLength": 25,
-  "rust-analyzer.cachePriming.enable": true,
-  "rust-analyzer.cachePriming.numThreads": 5,
+  "rust-analyzer.cachePriming.enable": false,
+  "rust-analyzer.cachePriming.numThreads": 2,
+  "rust-analyzer.checkOnSave": false,
   "workspace.ignoredFolders": ["$HOME", "$HOME/.cargo/**", "$HOME/.rustup/**"],
   "clangd.initializationOptions": {
     "parameterHints": true,
