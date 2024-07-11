@@ -14,6 +14,7 @@
     "typeHints": true,
     "maxLength": 50
   },
+
   "languageserver": {
     "css": {
       "command": "vscode-css-language-server",
@@ -65,16 +66,17 @@
       "initializationOptions": {},
       "settings": {}
     },
+    // "javascript": {
+    //   "command": "typescript-language-server",
+    //   "args": ["--stdio"],
+    //   "filetypes": ["javascript", "javascriptreact"],
+    //   "rootPatterns": [".git", "package.json"]
+    // },
     // "typescript": {
-    //   "module": "./node_modules/typescript/lib/tsserver.js",
+    //   "command": "typescript-language-server",
     //   "args": ["--stdio"],
     //   "filetypes": ["typescript", "typescriptreact"],
-    //   "rootPatterns": ["tsconfig.json", "package.json", "jsconfig.json"],
-    //   "initializationOptions": {},
-    //   "settings": {
-    //     "javascript.useCodeSnippetsOnMethodSuggest": true,
-    //     "javascript.validate.enable": true
-    //   }
+    //   "rootPatterns": [".git", "package.json"]
     // },
     "lua": {
       "command": "lua-language-server",
