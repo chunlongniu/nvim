@@ -86,4 +86,6 @@ Run:
 ```shell
 brew install btop
 ```
-6. 
+## Trouble fix
+1. Could not parse linter output due to: Expected value but found invalid token at character 1  output: Error
+   npm install eslint_d@13.1.2
