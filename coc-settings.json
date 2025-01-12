@@ -8,21 +8,28 @@
   "rust-analyzer.cachePriming.enable": false,
   "rust-analyzer.cachePriming.numThreads": 2,
   "rust-analyzer.checkOnSave": false,
-  "workspace.ignoredFolders": ["$HOME", "$HOME/.cargo/**", "$HOME/.rustup/**"],
+  "workspace.ignoredFolders": [
+    "$HOME",
+    "$HOME/.cargo/**",
+    "$HOME/.rustup/**"
+  ],
   "clangd.initializationOptions": {
     "parameterHints": true,
     "typeHints": true,
     "maxLength": 50
   },
-
   "languageserver": {
     "css": {
       "command": "vscode-css-language-server",
-      "args": ["--stdio"]
+      "args": [
+        "--stdio"
+      ]
     },
     "coc-pyright": {
       "command": "pyright-langserver",
-      "filetypes": ["py"],
+      "filetypes": [
+        "py"
+      ],
       "rootPatterns": [
         "setup.py",
         "setup.cfg",
@@ -42,7 +49,10 @@
         ".git/",
         ".clangd"
       ],
-      "filetypes": ["c", "cpp"],
+      "filetypes": [
+        "c",
+        "cpp"
+      ],
       "initializationOptions": {
         "clangdPath": "/usr/bin/clangd",
         "cache": {
@@ -50,19 +60,30 @@
         }
       },
       "settings": {
-        "clangd.arguments": ["-std=c++17"]
+        "clangd.arguments": [
+          "-std=c++17"
+        ]
       }
     },
     "go": {
       "command": "gopls",
-      "rootPatterns": ["go.mod"],
+      "rootPatterns": [
+        "go.mod"
+      ],
       "trace.server": "verbose",
-      "filetypes": ["go"]
+      "filetypes": [
+        "go"
+      ]
     },
     "cmake": {
       "command": "cmake-language-server",
-      "filetypes": ["cmake", "CMakeLists.txt"],
-      "rootPatterns": ["CMakeLists.txt"],
+      "filetypes": [
+        "cmake",
+        "CMakeLists.txt"
+      ],
+      "rootPatterns": [
+        "CMakeLists.txt"
+      ],
       "initializationOptions": {},
       "settings": {}
     },
@@ -80,8 +101,12 @@
     // },
     "lua": {
       "command": "lua-language-server",
-      "filetypes": ["lua"],
-      "rootPatterns": ["*.lua"],
+      "filetypes": [
+        "lua"
+      ],
+      "rootPatterns": [
+        "*.lua"
+      ],
       "initializationOptions": {
         "diagnostics": true,
         "completion": true
