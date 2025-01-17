@@ -24,6 +24,12 @@ Run:
 ```shell
 brew install node
 ```
+## Install ripgrep
+Run:
+```shell
+apt install ripgrep
+#for grep string
+```
 ## Install other useful terminal tools
 1. Install bat
 Run:
