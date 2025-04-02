@@ -1,23 +1,51 @@
 {
   "rust-analyzer.server.path": "$HOME/.cargo/bin/rust-analyzer",
   "rust-analyzer.diagnostics.enable": true,
-  "rust-analyzer.inlayHints.chainingHints": true,
+  // "rust-analyzer.inlayHints.chainingHints": true,
   "rust-analyzer.inlayHints.typeHints.enable": true,
   "rust-analyzer.inlayHints.parameterHints.enable": true,
   "rust-analyzer.inlayHints.maxLength": 25,
   "rust-analyzer.cachePriming.enable": false,
   "rust-analyzer.cachePriming.numThreads": 2,
   "rust-analyzer.checkOnSave": false,
+
+  "python.jediEnabled": false,
+  "python.linting.pylintEnabled": true,
+  "python.linting.flake8Enabled": false,
+  "python.linting.mypyEnabled": false,
+  "python.linting.pylintPath": "pylint",
+  "python.analysis.typeCheckingMode": "basic",
+  "python.formatting.provider": "black",
+  "python.linting.pydocstyleEnabled": false,
+  "python.linting.pydocstyleArgs": ["--convention=google"],
+  "python.linting.enabled": true,
+  "python.linting.pylintArgs": [
+      "--disable=missing-docstring",
+      "--disable=C0111",
+  ],
+  "go.goplsOptions": {
+      "staticcheck": true,
+      "completeUnimported": true,
+      "usePlaceholders": true,
+      "analyses": {
+          "unusedparams": true,
+          "shadow": true
+      }
+  },
+  "go.goplsPath": "gopls",
+  "go.enable": true,
   "workspace.ignoredFolders": [
     "$HOME",
     "$HOME/.cargo/**",
     "$HOME/.rustup/**"
   ],
-  "clangd.initializationOptions": {
-    "parameterHints": true,
-    "typeHints": true,
-    "maxLength": 50
-  },
+
+  // "clangd.initializationOptions": {
+  //   "parameterHints": true,
+  //   "typeHints": true,
+  //   "maxLength": 50
+  // },
+
   "languageserver": {
     "css": {
       "command": "vscode-css-language-server",
@@ -68,7 +96,8 @@
     "go": {
       "command": "gopls",
       "rootPatterns": [
-        "go.mod"
+        "go.mod",
+	      ".git/"
       ],
       "trace.server": "verbose",
       "filetypes": [
@@ -87,20 +116,8 @@
       "initializationOptions": {},
       "settings": {}
     },
-    // "javascript": {
-    //   "command": "typescript-language-server",
-    //   "args": ["--stdio"],
-    //   "filetypes": ["javascript", "javascriptreact"],
-    //   "rootPatterns": [".git", "package.json"]
-    // },
-    // "typescript": {
-    //   "command": "typescript-language-server",
-    //   "args": ["--stdio"],
-    //   "filetypes": ["typescript", "typescriptreact"],
-    //   "rootPatterns": [".git", "package.json"]
-    // },
     "lua": {
-      "command": "lua-language-server",
+      "command": "$HOME/.config/coc/extensions/coc-lua-data/lua-language-server/bin/lua-language-server",
       "filetypes": [
         "lua"
       ],

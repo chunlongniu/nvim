@@ -56,3 +56,11 @@ vim.o.shortmess = vim.o.shortmess .. "c"
 
 vim.fn.setenv("GEMINI_API_KEY", "AIzaSyAdWgXZeTs-uRc0YycwScKQ2xG1cPOh5nY")
 vim.opt.laststatus = 3
+vim.g.codeium_enabled = false
+
+vim.api.nvim_create_autocmd("FileType", {
+  pattern = {"markdown", "c", "c++"},
+  callback = function()
+      vim.g.codeium_enabled = false
+  end,
+})
