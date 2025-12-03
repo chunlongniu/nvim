@@ -23,6 +23,12 @@
       "--disable=missing-docstring",
       "--disable=C0111",
   ],
+  "python.defaultInterpreterPath": "",
+  "python.analysis.autoSearchPaths": true,
+  "python.analysis.useLibraryCodeForTypes": true,
+  "python.venvPath": "~/.local/share/virtualenvs:~/.venvs:venv:.venv:env:.env",
+  "python.autoComplete.extraPaths": [],
+  "pyright.organizeimports.provider": "isort",
   "go.goplsOptions": {
       "staticcheck": true,
       "completeUnimported": true,
@@ -55,6 +61,8 @@
     },
     "coc-pyright": {
       "command": "pyright-langserver",
+      "pyright.venvPath": ".",
+      "pyright.venv": ".venv",
       "filetypes": [
         "py"
       ],

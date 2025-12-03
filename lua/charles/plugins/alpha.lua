@@ -1,9 +1,16 @@
 return {
   "goolord/alpha-nvim",
   event = "VimEnter",
+  dependencies={
+      "nvim-tree/nvim-web-devicons",
+      "MaximilianLloyd/ascii.nvim",
+      "MunifTanjim/nui.nvim",
+  },
+
   config = function()
     local alpha = require("alpha")
     local dashboard = require("alpha.themes.dashboard")
+    local ascii = require("ascii")
 
     -- Set header
     dashboard.section.header.val = {
@@ -16,6 +23,12 @@ return {
       "  ╚═╝  ╚═══╝╚══════╝ ╚═════╝   ╚═══╝  ╚═╝╚═╝     ╚═╝ ",
       "                                                     ",
     }
+
+    -- dashboard.section.header.val = ascii.art.animals.dogs.lucky
+    -- dashboard.section.header.val = ascii.art.text.neovim.sharp
+    -- dashboard.section.header.val = ascii.art.text.neovim.ogre
+    -- dashboard.section.header.val = ascii.art.text.neovim.ansi_shadow
+
 
     -- Set menu
     dashboard.section.buttons.val = {
