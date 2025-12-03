@@ -1,141 +1,90 @@
 {
-  "rust-analyzer.server.path": "$HOME/.cargo/bin/rust-analyzer",
-  "rust-analyzer.diagnostics.enable": true,
-  // "rust-analyzer.inlayHints.chainingHints": true,
-  "rust-analyzer.inlayHints.typeHints.enable": true,
-  "rust-analyzer.inlayHints.parameterHints.enable": true,
-  "rust-analyzer.inlayHints.maxLength": 25,
-  "rust-analyzer.cachePriming.enable": false,
-  "rust-analyzer.cachePriming.numThreads": 2,
-  "rust-analyzer.checkOnSave": false,
+  // ---------------------------
+  // Python (Global Settings)
+  // ---------------------------
+  // 1. Tell CoC exactly where the Virtual Environment Python is
+  "python.pythonPath": "${workspaceFolder}/.venv/bin/python",
+  "python.venvPath": "${workspaceFolder}",
 
-  "python.jediEnabled": false,
-  "python.linting.pylintEnabled": true,
-  "python.linting.flake8Enabled": false,
-  "python.linting.mypyEnabled": false,
-  "python.linting.pylintPath": "pylint",
-  "python.analysis.typeCheckingMode": "basic",
-  "python.formatting.provider": "black",
-  "python.linting.pydocstyleEnabled": false,
-  "python.linting.pydocstyleArgs": ["--convention=google"],
+  // 2. Pyright Specifics (Top-level, do NOT put in "languageserver")
+  "pyright.venvPath": ".",
+  "pyright.venv": ".venv",
+  "pyright.organizeimports.provider": "isort",
+
+  // 3. Pylint Configuration
   "python.linting.enabled": true,
-  "python.linting.pylintArgs": [
-      "--disable=missing-docstring",
-      "--disable=C0111",
-  ],
-  "python.defaultInterpreterPath": "",
+  "python.linting.pylintEnabled": true,
+  // CRITICAL FIX: Use the Pylint inside the .venv so it sees your installed packages
+  "python.linting.pylintPath": "${workspaceFolder}/.venv/bin/pylint",
+  "python.formatting.provider": "black",
+
+  "python.analysis.typeCheckingMode": "basic",
   "python.analysis.autoSearchPaths": true,
   "python.analysis.useLibraryCodeForTypes": true,
-  "python.venvPath": "~/.local/share/virtualenvs:~/.venvs:venv:.venv:env:.env",
-  "python.autoComplete.extraPaths": [],
-  "pyright.organizeimports.provider": "isort",
-  "go.goplsOptions": {
-      "staticcheck": true,
-      "completeUnimported": true,
-      "usePlaceholders": true,
-      "analyses": {
-          "unusedparams": true,
-          "shadow": true
-      }
-  },
-  "go.goplsPath": "gopls",
-  "go.enable": true,
+
+  // ---------------------------
+  // Workspace ignore
+  // ---------------------------
   "workspace.ignoredFolders": [
     "$HOME",
     "$HOME/.cargo/**",
     "$HOME/.rustup/**"
   ],
 
-  // "clangd.initializationOptions": {
-  //   "parameterHints": true,
-  //   "typeHints": true,
-  //   "maxLength": 50
-  // },
-
+  // ===========================================================
+  // Language Servers
+  // ===========================================================
   "languageserver": {
+    // ---------------------------
+    // CSS
+    // ---------------------------
     "css": {
       "command": "vscode-css-language-server",
-      "args": [
-        "--stdio"
-      ]
+      "args": ["--stdio"],
+      "filetypes": ["css", "scss", "less"]
     },
-    "coc-pyright": {
-      "command": "pyright-langserver",
-      "pyright.venvPath": ".",
-      "pyright.venv": ".venv",
-      "filetypes": [
-        "py"
-      ],
-      "rootPatterns": [
-        "setup.py",
-        "setup.cfg",
-        "requirements.txt",
-        ".git/",
-        ".venv/"
-      ],
-      "initializationOptions": {
-        "python.pythonPath": "python"
-      }
-    },
+
+    // ❌ REMOVED "coc-pyright" block from here.
+    // It is handled by the extension and top-level settings above.
+
+    // ---------------------------
+    // Clangd
+    // ---------------------------
     "coc-clangd": {
       "command": "clangd",
-      "rootPatterns": [
-        "compile_flags.txt",
-        "compile_commands.json",
-        ".git/",
-        ".clangd"
-      ],
-      "filetypes": [
-        "c",
-        "cpp"
-      ],
+      "filetypes": ["c", "cpp"],
+      "rootPatterns": ["compile_flags.txt", "compile_commands.json", ".git/", ".clangd"],
       "initializationOptions": {
         "clangdPath": "/usr/bin/clangd",
-        "cache": {
-          "directory": "/tmp/clangd"
-        }
-      },
-      "settings": {
-        "clangd.arguments": [
-          "-std=c++17"
-        ]
+        "cache": { "directory": "/tmp/clangd" }
       }
     },
+
+    // ---------------------------
+    // Go
+    // ---------------------------
     "go": {
       "command": "gopls",
-      "rootPatterns": [
-        "go.mod",
-	      ".git/"
-      ],
+      "filetypes": ["go"],
+      "rootPatterns": ["go.mod", ".git/"],
       "trace.server": "verbose",
-      "filetypes": [
-        "go"
-      ]
+      "initializationOptions": {
+        "staticcheck": true
+      }
     },
+
+    // ---------------------------
+    // CMake & Lua (Kept as is)
+    // ---------------------------
     "cmake": {
       "command": "cmake-language-server",
-      "filetypes": [
-        "cmake",
-        "CMakeLists.txt"
-      ],
-      "rootPatterns": [
-        "CMakeLists.txt"
-      ],
-      "initializationOptions": {},
-      "settings": {}
+      "filetypes": ["cmake", "CMakeLists.txt"],
+      "rootPatterns": ["CMakeLists.txt"]
     },
     "lua": {
       "command": "$HOME/.config/coc/extensions/coc-lua-data/lua-language-server/bin/lua-language-server",
-      "filetypes": [
-        "lua"
-      ],
-      "rootPatterns": [
-        "*.lua"
-      ],
-      "initializationOptions": {
-        "diagnostics": true,
-        "completion": true
-      }
+      "filetypes": ["lua"],
+      "rootPatterns": ["*.lua"]
     }
   }
 }
