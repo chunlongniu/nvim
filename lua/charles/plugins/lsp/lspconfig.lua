@@ -1,7 +1,6 @@
 -- lua/charles/plugins/lsp/lspconfig.lua
 return {
 	"neovim/nvim-lspconfig",
-	-- Use VeryLazy to ensure all dependencies and core LSP are initialized
 	event = "VeryLazy",
 	dependencies = {
 		"hrsh7th/cmp-nvim-lsp",
@@ -19,7 +18,6 @@ return {
 		require("neodev").setup()
 
 		-- 1. Global On_Attach Keymaps & Autocmd
-		-- ──────────────────────────────────────────────────────────────────────────
 		vim.api.nvim_create_autocmd("LspAttach", {
 			group = vim.api.nvim_create_augroup("UserLspConfig", { clear = true }),
 			callback = function(ev)
@@ -87,12 +85,32 @@ return {
 		})
 
 		-- 2. Diagnostics Setup
-		-- ──────────────────────────────────────────────────────────────────────────
-		local signs = { Error = "", Warn = "", Hint = "💡", Info = "" }
-		for type, icon in pairs(signs) do
-			local hl = "DiagnosticSign" .. type
-			vim.fn.sign_define(hl, { text = icon, texthl = hl, numhl = "" })
-		end
+		vim.diagnostic.config({
+			-- 1. Global display options
+			virtual_text = true,
+			signs = true,
+			underline = true,
+			update_in_insert = false, -- Don't show diagnostics while typing
+
+			-- 2. Define the sign text/icons
+			signs = {
+				text = {
+					[vim.diagnostic.severity.ERROR] = "", -- The 'Error' icon
+					[vim.diagnostic.severity.WARN] = "", -- The 'Warning' icon
+					[vim.diagnostic.severity.INFO] = "", -- The 'Info' icon
+					[vim.diagnostic.severity.HINT] = "💡", -- The 'Hint' icon
+				},
+				-- Set 'active = true' to enable the signs handler globally
+				active = true,
+			},
+
+			-- 3. Floating window options (on hover)
+			float = {
+				border = "single",
+				source = "always",
+				header = "",
+			},
+		})
 
 		vim.diagnostic.config({
 			virtual_text = true,
@@ -101,8 +119,6 @@ return {
 		})
 
 		-- 3. Core Server Configuration & Enabling
-		-- ──────────────────────────────────────────────────────────────────────────
-		-- Set global defaults for ALL servers
 		vim.lsp.config("*", {
 			capabilities = capabilities,
 		})
@@ -112,7 +128,6 @@ return {
 		for _, server_name in ipairs(installed_servers) do
 			local opts = {}
 
-			-- ── Per-server overrides ───────────────────────────────────────────
 			if server_name == "lua_ls" then
 				opts.settings = {
 					Lua = {
@@ -169,10 +184,6 @@ return {
 						inlayHints = { chainingHints = true, typeHints = true, parameterHints = true },
 					},
 				}
-			elseif server_name == "ruff_lsp" then
-				opts.on_attach = function(client, _)
-					client.server_capabilities.hoverProvider = false
-				end
 			elseif server_name == "pyright" then
 				opts.settings = {
 					python = { analysis = { typeCheckingMode = "standard", diagnosticMode = "workspace" } },

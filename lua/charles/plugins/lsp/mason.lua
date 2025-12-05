@@ -42,7 +42,7 @@ return {
 				"jsonls",
 				"yamlls",
 				"marksman",
-				"ruff",
+				"pyright",
 			},
 			automatic_installation = true,
 			automatic_enable = false,
@@ -70,7 +70,7 @@ return {
 				"rustfmt",
 				-- Python
 				"isort",
-				"ruff",
+				"pyright",
 				"black",
 				"debugpy",
 				-- Lua
