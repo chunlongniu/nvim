@@ -92,6 +92,22 @@ Run:
 ```shell
 brew install btop
 ```
+5. zoxide
+zoxide is a smarter, faster, and more modern version of the cd command. It is written in Rust and is designed to replace the older z script you asked about earlier.
+Think of it as "Autocorrect for your file system."
+What does it do?
+It remembers every directory you visit. Instead of typing the full path to a folder, you just type a part of its name, and zoxide jumps you there instantly
+To install zoxide:
+```shell
+# macOS / Linux (Homebrew):
+brew install zoxide
+
+# Ubuntu/Debian:
+sudo apt install zoxide
+
+# Windows:
+winget install zoxide
+```
 ## Trouble fix
 1. Could not parse linter output due to: Expected value but found invalid token at character 1  output: Error
    npm install eslint_d@13.1.2
