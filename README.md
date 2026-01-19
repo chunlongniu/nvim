@@ -93,6 +93,7 @@ Run:
 brew install btop
 ```
 5. zoxide
+
 zoxide is a smarter, faster, and more modern version of the cd command. It is written in Rust and is designed to replace the older z script you asked about earlier.
 Think of it as "Autocorrect for your file system."
 What does it do?
