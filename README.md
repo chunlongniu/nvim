@@ -162,9 +162,9 @@ Pass Command Reference
 | `pass -c <path>` | Copy password to clipboard (clears in 45s). |
 | `pass git push` | Sync changes to remote repository. |
 
-```bash
+9. Yazi
 
-```
+
 
 ## Trouble fix
 1. Could not parse linter output due to: Expected value but found invalid token at character 1  output: Error
