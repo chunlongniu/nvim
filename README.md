@@ -109,6 +109,19 @@ sudo apt install zoxide
 # Windows:
 winget install zoxide
 ```
+6. ripgrep
+ripgrep (command name: rg) is a command-line search tool that finds text within files. It is essentially a modern, much faster version of the classic grep command.
+
+It is popular among developers because it is built in Rust (making it incredibly fast) and it has smart defaults (it automatically ignores files listed in your .gitignore and hidden folders like .git)
+To install ripgrep
+```
+# macOS:
+brew install ripgrep
+# Ubuntu/Debian:
+sudo apt install ripgrep
+# Windows:
+winget install BurntSushi.ripgrep.MSVC
+```
 ## Trouble fix
 1. Could not parse linter output due to: Expected value but found invalid token at character 1  output: Error
    npm install eslint_d@13.1.2
