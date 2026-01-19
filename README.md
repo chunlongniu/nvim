@@ -116,13 +116,24 @@ ripgrep (command name: rg) is a command-line search tool that finds text within 
 It is popular among developers because it is built in Rust (making it incredibly fast) and it has smart defaults (it automatically ignores files listed in your .gitignore and hidden folders like .git)
 To install ripgrep
 
-```
+```shell
 # macOS:
 brew install ripgrep
 # Ubuntu/Debian:
 sudo apt install ripgrep
 # Windows:
 winget install BurntSushi.ripgrep.MSVC
+```
+7. fd
+
+fd is a simple, fast, and user-friendly alternative to the classic find command. Like ripgrep and zoxide, it is written in Rust and is designed to fix the usability issues of older Unix tools.
+```shell
+# macOS:
+brew install fd
+# Windows:
+winget install fd
+#Debian/ubuntu
+sudo apt install fd-find
 ```
 ## Trouble fix
 1. Could not parse linter output due to: Expected value but found invalid token at character 1  output: Error
