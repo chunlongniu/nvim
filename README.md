@@ -136,6 +136,36 @@ winget install fd
 sudo apt install fd-find
 ln -s $(which fdfind) ~/.local/bin/fd
 ```
+8. pass
+
+the pass command refers to The Standard Unix Password Manager.
+
+It is a command-line tool that follows the "Unix Philosophy" (doing one thing well). It is very popular among developers who want a secure, local, and scriptable way to manage secrets like API keys or passwords.
+
+1. How it works
+pass stores each password inside a GPG-encrypted text file. These files are organized in a simple folder hierarchy in a directory called ~/.password-store.
+
+Encryption: It uses GnuPG (GPG), so only someone with your private key can read the secrets.
+
+Syncing: It has built-in Git support, meaning you can sync your password store across all your devices using your private Gitea server.
+
+2. Common Commands
+If you have pass installed, here is how you use it:
+Pass Command Reference
+
+| Command | Action |
+|---------|--------|
+| `pass init <gpg-id>` | Initialize store with a GPG key. |
+| `pass insert <path>` | Add a new password (e.g., `pass insert social/facebook`). |
+| `pass generate <path> <len>` | Generate a secure password (e.g., `pass generate email/gmail 20`). |
+| `pass show <path>` | Print password to terminal. |
+| `pass -c <path>` | Copy password to clipboard (clears in 45s). |
+| `pass git push` | Sync changes to remote repository. |
+
+```bash
+
+```
+
 ## Trouble fix
 1. Could not parse linter output due to: Expected value but found invalid token at character 1  output: Error
    npm install eslint_d@13.1.2
