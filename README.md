@@ -134,6 +134,7 @@ brew install fd
 winget install fd
 #Debian/ubuntu
 sudo apt install fd-find
+ln -s $(which fdfind) ~/.local/bin/fd
 ```
 ## Trouble fix
 1. Could not parse linter output due to: Expected value but found invalid token at character 1  output: Error
