@@ -163,8 +163,23 @@ Pass Command Reference
 | `pass git push` | Sync changes to remote repository. |
 
 9. Yazi
-
-
+ Blazing fast terminal file manager written in Rust, based on async I/O.
+ how to install it in ubuntu
+ ```bash
+ wget https://github.com/sxyazi/yazi/releases/latest/download/yazi-x86_64-unknown-linux-musl.zip
+ unzip yazi-x86_64-unknown-linux-musl.zip
+ # set EDITOR=nvim in zshell or bash shell
+ ```
+how to install themes for yazi
+```bash
+git clone https://github.com/folke/tokyonight.nvim.git /tmp/tokyo
+mkdir -p ~/.config/yazi/flavors
+cp -r /tmp/tokyo/extras/* ~/.config/yazi/flavors/
+cat << EOF > theme.toml
+[flavor]
+use = "catppuccin-mocha"
+EOF
+```
 
 ## Trouble fix
 1. Could not parse linter output due to: Expected value but found invalid token at character 1  output: Error
