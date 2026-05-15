@@ -180,6 +180,24 @@ cat << EOF > theme.toml
 use = "catppuccin-mocha"
 EOF
 ```
+## Install SystemVerilog LSP
+```zsh
+cargo install svls
+```
+```yaml
+[option]
+# Enable Verilator linting if you have it installed
+verilator = true
+
+[include]
+# Add paths to your header/include files
+paths = ["include", "src/core/include"]
+
+[defines]
+# Define global macros
+SYNTHESIS = ""
+SIMULATION = "1"
+```
 
 ## Trouble fix
 1. Could not parse linter output due to: Expected value but found invalid token at character 1  output: Error
