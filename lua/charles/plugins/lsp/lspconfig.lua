@@ -161,6 +161,15 @@ return {
 					"--header-insertion=iwyu",
 					"--completion-style=detailed",
 				}
+			elseif server_name == "verible" then
+				opts.cmd = {
+					"verible-verilog-ls",
+					"--rules_config_search",
+				}
+				opts.filetypes = { "verilog", "systemverilog" }
+				opts.root_dir = function(fname)
+					return vim.fs.root(fname, { ".git", "verible.filelist", "Makefile" })
+				end
 			elseif server_name == "gopls" then
 				opts.settings = {
 					gopls = {
@@ -180,10 +189,10 @@ return {
 				opts.settings = {
 					["rust-analyzer"] = {
 						cargo = { allFeatures = true },
-            check = {
-              command = "clippy",
-              features = "all",
-            }
+						check = {
+							command = "clippy",
+							features = "all",
+						},
 						inlayHints = { chainingHints = true, typeHints = true, parameterHints = true },
 					},
 				}

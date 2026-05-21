@@ -41,6 +41,7 @@ return {
 				"rust_analyzer",
 				"jsonls",
 				"yamlls",
+				"verible", -- The SystemVerilog/Verilog LSP engine
 				"marksman",
 				"pyright",
 			},
