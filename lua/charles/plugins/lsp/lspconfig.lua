@@ -180,7 +180,10 @@ return {
 				opts.settings = {
 					["rust-analyzer"] = {
 						cargo = { allFeatures = true },
-						checkOnSave = { command = "clippy" },
+            check = {
+              command = "clippy",
+              features = "all",
+            }
 						inlayHints = { chainingHints = true, typeHints = true, parameterHints = true },
 					},
 				}
@@ -190,7 +193,6 @@ return {
 				}
 			end
 
-			-- 🛑 FIX: Use the native Neovim API to configure and enable the server
 			vim.lsp.config(server_name, opts)
 			vim.lsp.enable({ server_name })
 		end
