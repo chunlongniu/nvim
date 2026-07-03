@@ -81,6 +81,14 @@ return {
 						})
 					end
 				end
+
+				local client = vim.lsp.get_client_by_id(ev.data.client_id)
+				if client and client.name == "pyright" then
+					client.server_capabilities.documentFormattingProvider = false
+				end
+				if client and client.name == "ruff" then
+					client.server_capabilities.hoverProvider = false
+				end
 			end,
 		})
 
@@ -188,18 +196,46 @@ return {
 			elseif server_name == "rust_analyzer" then
 				opts.settings = {
 					["rust-analyzer"] = {
-						cargo = { allFeatures = true },
+						cargo = {
+							sysroot = "discover",
+							sysrootSrc = nil,
+							extaArgs = {},
+							allFeatures = true,
+							buildScripts = {
+								enable = true,
+							},
+						},
 						check = {
 							command = "clippy",
-							features = "all",
 						},
-						inlayHints = { chainingHints = true, typeHints = true, parameterHints = true },
+						procMacro = {
+							enable = true,
+						},
+						inlayHints = {
+							chainingHints = true,
+							typeHints = true,
+							parameterHints = true,
+						},
 					},
 				}
+			elseif server_name == "ruff" then
+				opts.on_attach = function(client)
+					client.server_capabilities.hoverProvider = false
+				end
 			elseif server_name == "pyright" then
 				opts.settings = {
-					python = { analysis = { typeCheckingMode = "standard", diagnosticMode = "workspace" } },
+					python = {
+						analysis = {
+							typeCheckingMode = "standard",
+							diagnosticMode = "workspace",
+							autoSearchPaths = true,
+							useLibraryCodeForTypes = true,
+						},
+					},
 				}
+				opts.on_attach = function(client)
+					client.server_capabilities.documentFormattingProvider = false
+				end
 			end
 
 			vim.lsp.config(server_name, opts)
